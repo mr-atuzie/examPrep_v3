@@ -12,7 +12,7 @@ import ScreenWrapper from "../../components/ScreenWrapper";
 const durations = [
   { value: "30", label: "30 minutes" },
   { value: "60", label: "1 hour" },
-  //   { value: "90", label: "1 hour 30 minutes" },
+  { value: "90", label: "1 hour 30 minutes" },
 ];
 
 const convertMinutesToSeconds = (minutes) => {
@@ -82,7 +82,7 @@ export default function SetExamDuration() {
           </Text>
 
           <Text className="text-center font-sans text-[14px] text-gray-600 mb-8 leading-6 px-2">
-            How much time do you want to allocate for this practice test?
+            How long do you want this {subject} exam to last?
           </Text>
 
           {/* Duration Selection Cards */}

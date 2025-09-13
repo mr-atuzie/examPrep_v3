@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native";
 
 const BackButton = ({
   btnStyle,
-  iconSize = 24,
+  iconSize = 20,
   iconColor = "black",
   backgroundColor = "#f3f4f6", // default gray-100
 }) => {

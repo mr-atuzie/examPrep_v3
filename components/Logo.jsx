@@ -1,22 +1,25 @@
 import { FontAwesome5 } from "@expo/vector-icons";
-import { Text, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 
-export default function Logo() {
+export default function Logo({
+  onPress,
+  size = 22,
+  color = "#fff",
+  backgroundColor = "bg-primary",
+  className = "",
+  accessibilityLabel = "Logo button",
+  testID = "logo-button",
+}) {
   return (
-    <View className="flex-row items-end">
-      <Text
-        style={{ fontSize: 18 }}
-        className="tracking-widest text-primary font-poppins-extrabold"
-      >
-        EX
-      </Text>
-      <FontAwesome5 name="graduation-cap" size={22} color="#1E4B9B" />
-      <Text
-        style={{ fontSize: 18 }}
-        className="tracking-widest text-primary font-poppins-extrabold"
-      >
-        M{"  "} PREP
-      </Text>
-    </View>
+    <TouchableOpacity
+      className={`${backgroundColor} rounded-md px-3 py-1 self-start ${className}`}
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}
+      activeOpacity={0.8}
+    >
+      <FontAwesome5 name="graduation-cap" size={size} color={color} />
+    </TouchableOpacity>
   );
 }

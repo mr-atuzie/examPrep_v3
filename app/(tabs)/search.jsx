@@ -142,7 +142,7 @@ export default function Search() {
                   <TouchableOpacity
                     onPress={() =>
                       router.push({
-                        pathname: "/(modals)/examDetailsModal",
+                        pathname: "/(modals)/examDetails",
                         params: { examId: exam?._id },
                       })
                     }

@@ -65,17 +65,18 @@ const ProfileSkeletonLoader = () => {
       <View className="items-center p-4 mb-6">
         <SkeletonBox height={140} width={140} radius={70} />
         {/* Exam Title */}
-        <SkeletonBox height={28} width="70%" className="mt-6 mb-2" />
+        {/* <SkeletonBox height={28} width="70%" className="mt-6 mb-2" /> */}
         {/* Description */}
 
         {/* Question Count */}
-        <SkeletonBox height={28} width={200} className=" mb-6" radius={14} />
+        {/* <SkeletonBox height={28} width={200} className=" mb-6" radius={14} /> */}
         {/* Subscription Info */}
         <View className="bg-indigo-50 w-full flex-col justify-center items-center rounded-2xl p-5 mb-8">
           <SkeletonBox height={22} width="60%" className="mb-2" />
           <SkeletonBox height={16} width="90%" className="mb-1" />
         </View>
         {/* Action Button */}
+        <SkeletonBox height={50} width="100%" className="mb-4" radius={12} />
         <SkeletonBox height={50} width="100%" className="mb-4" radius={12} />
         <SkeletonBox height={50} width="100%" className="mb-4" radius={12} />
         <SkeletonBox height={50} width="100%" className="mb-4" radius={12} />

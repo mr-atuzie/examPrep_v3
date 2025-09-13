@@ -145,8 +145,8 @@ const SubscriptionCard = ({ subscription, formatCurrency, getExamLogo }) => {
               daysRemaining > 15
                 ? "bg-primary"
                 : daysRemaining > 7
-                ? "bg-yellow-500"
-                : "bg-red-500"
+                  ? "bg-yellow-500"
+                  : "bg-red-500"
             }`}
             style={{ width: `${progress * 100}%` }}
           />
@@ -172,10 +172,10 @@ const SubscriptionCard = ({ subscription, formatCurrency, getExamLogo }) => {
           />
 
           <Text className="text-gray-600 font-sans text-[12px]">
-            Next Payment
+            Expires On
           </Text>
-          <Text className="font-sans-medium text-[13px]">
-            {format(new Date(subscription.expiresAt), "dd MMM yyyy")}
+          <Text className="font-sans-medium text-[12px]">
+            {format(new Date(subscription.expiresAt), "EEEE, MMM do")}
           </Text>
         </TouchableOpacity>
       </View>
