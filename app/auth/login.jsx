@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import BackButton from "../../components/BackButton";
 import CustomButton from "../../components/CustomButton";
 import Header from "../../components/Header";
+import Logo from "../../components/Logo";
 import ScreenWrapper from "../../components/ScreenWrapper";
 import { setUser } from "../../store/userSlice";
 
@@ -49,13 +50,13 @@ export default function LoginScreen() {
   return (
     <ScreenWrapper>
       <View className="flex-1 p-4">
-        <Header leftIcon={<BackButton />} />
+        <Header leftIcon={<BackButton />} logo={<Logo />} />
 
         <View className="my-9">
           <Text className="font-poppins-bold text-primary text-display-md">
             Hey,Welcome Back.
           </Text>
-          <Text className="text-body  ">
+          <Text className="text-body font-sans ">
             Login now to start practicing and stay ahead
           </Text>
         </View>
@@ -134,7 +135,7 @@ export default function LoginScreen() {
             <TouchableOpacity
               onPress={() => router.push("/auth/forgotPassword")}
             >
-              <Text className="text-primary underline font-sans-medium text-[15px] ">
+              <Text className="text-primary font-sans-medium text-[15px] ">
                 Forgot password?
               </Text>
             </TouchableOpacity>

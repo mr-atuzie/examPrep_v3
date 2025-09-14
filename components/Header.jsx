@@ -1,24 +1,23 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
-const Header = ({ logo, title, leftIcon, rightIcon, textStyle }) => {
+const Header = ({ logo, leftIcon, rightIcon }) => {
   return (
     <View
       style={{
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "center",
+        width: "100%",
       }}
     >
-      {/* Left icon container */}
-      <View style={{ flex: 1, alignItems: "flex-start" }}>{leftIcon}</View>
+      {/* Left icon - absolutely positioned */}
+      <View style={{ position: "absolute", left: 0 }}>{leftIcon}</View>
 
-      {/* Center content - either logo or title */}
-      <View style={{ alignItems: "center" }}>
-        {logo || (title && <Text style={textStyle}>{title}</Text>)}
-      </View>
+      {/* Logo - centered */}
+      <View>{logo}</View>
 
-      {/* Right icon or spacer */}
-      <View style={{ flex: 1, alignItems: "flex-end" }}>{rightIcon}</View>
+      {/* Right icon - absolutely positioned */}
+      <View style={{ position: "absolute", right: 0 }}>{rightIcon}</View>
     </View>
   );
 };

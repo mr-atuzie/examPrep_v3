@@ -11,7 +11,7 @@ const BackButton = ({
   const router = useRouter();
   return (
     <TouchableOpacity
-      className="rounded-xl p-2 items-center justify-center"
+      className="rounded-lg p-2 items-center justify-center"
       style={{
         backgroundColor,
         alignSelf: "flex-start",

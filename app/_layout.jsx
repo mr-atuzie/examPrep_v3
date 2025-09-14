@@ -1,3 +1,14 @@
+import {
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  Poppins_800ExtraBold,
+} from "@expo-google-fonts/poppins";
+import {
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold,
+} from "@expo-google-fonts/roboto";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { useFonts } from "expo-font";
@@ -17,7 +28,13 @@ axios.defaults.withCredentials = true;
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    "Roboto-Regular": Roboto_400Regular,
+    "Roboto-Medium": Roboto_500Medium,
+    "Roboto-Bold": Roboto_700Bold,
+    "Poppins-Regular": Poppins_400Regular,
+    "Poppins-SemiBold": Poppins_600SemiBold,
+    "Poppins-Bold": Poppins_700Bold,
+    "Poppins-ExtraBold": Poppins_800ExtraBold,
   });
 
   const router = useRouter();

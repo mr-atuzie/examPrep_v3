@@ -1,4 +1,4 @@
-import { FontAwesome } from "@expo/vector-icons";
+import Entypo from "@expo/vector-icons/Entypo";
 import { useRouter } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
@@ -24,21 +24,20 @@ export default function WelcomeScreen() {
           <Logo />
           <TouchableOpacity
             onPress={handleSignIn}
-            className="flex-row items-center bg-primary rounded-full px-4 py-2"
+            className="flex-row items-center p-2"
             accessibilityRole="button"
             accessible
           >
-            <Text className="text-white text-body font-sans-medium mr-2">
-              Sign In
-            </Text>
-            <FontAwesome name="arrow-right" size={16} color="white" />
+            <Text className="text-body font-sans-medium ">Sign In</Text>
+
+            <Entypo name="chevron-small-right" size={22} color="black" />
           </TouchableOpacity>
         </View>
 
         {/* Main Content */}
         <View className="flex-1 justify-center">
           {/* Main Illustration */}
-          <View className="items-center justify-center h-[370px] w-full mb-8">
+          <View className="items-center justify-center h-[370px] w-full ">
             <AnimatedSvg entering={FadeIn.duration(1500)}>
               <WelcomeIcon width="100%" height="100%" />
             </AnimatedSvg>
