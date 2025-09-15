@@ -9,6 +9,7 @@ import CustomButton from "@/components/CustomButton";
 import Header from "@/components/Header";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import { ScrollView } from "react-native-gesture-handler";
+import Logo from "../../components/Logo";
 
 export default function ResetPassword() {
   const router = useRouter();
@@ -97,7 +98,7 @@ export default function ResetPassword() {
   return (
     <ScreenWrapper>
       <View className="flex-1 px-4 py-6">
-        <Header leftIcon={<BackButton />} />
+        <Header leftIcon={<BackButton />} logo={<Logo />} />
 
         <View className="mt-9 mb-8">
           <Text className="font-poppins-bold text-primary text-display-md">

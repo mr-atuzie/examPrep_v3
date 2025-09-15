@@ -13,6 +13,7 @@ import { TextInput } from "react-native-paper";
 import BackButton from "../../components/BackButton";
 import CustomButton from "../../components/CustomButton";
 import Header from "../../components/Header";
+import Logo from "../../components/Logo";
 import ScreenWrapper from "../../components/ScreenWrapper";
 
 const ForgotPassword = () => {
@@ -54,8 +55,8 @@ const ForgotPassword = () => {
   return (
     <ScreenWrapper>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View className="flex-1 p-4">
-          <Header leftIcon={<BackButton />} />
+        <View className="flex-1 py-6 px-4">
+          <Header leftIcon={<BackButton />} logo={<Logo />} />
 
           <>
             <View className="mt-9">
@@ -106,7 +107,7 @@ const ForgotPassword = () => {
               className="mt-12 flex-row justify-center"
             >
               <Text className="text-body font-sans">Changed your mind? </Text>
-              <Text className="text-primary underline text-body font-sans-bold">
+              <Text className="text-primary  text-body font-sans-bold">
                 Sign In
               </Text>
             </TouchableOpacity>

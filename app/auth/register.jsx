@@ -6,6 +6,7 @@ import { TextInput } from "react-native-paper";
 import BackButton from "../../components/BackButton";
 import CustomButton from "../../components/CustomButton";
 import Header from "../../components/Header";
+import Logo from "../../components/Logo";
 import ScreenWrapper from "../../components/ScreenWrapper";
 
 export default function RegisterScreen() {
@@ -61,8 +62,8 @@ export default function RegisterScreen() {
 
   return (
     <ScreenWrapper>
-      <View className="flex-1 p-4">
-        <Header leftIcon={<BackButton />} />
+      <View className="flex-1 px-4 py-6">
+        <Header leftIcon={<BackButton />} logo={<Logo />} />
 
         <View className="my-9">
           <Text className="font-poppins-bold text-primary text-display-md">

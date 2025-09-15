@@ -3,7 +3,7 @@ import { TouchableOpacity } from "react-native";
 
 export default function Logo({
   onPress,
-  size = 26,
+  size = 23,
   color = "#fff",
   backgroundColor = "bg-primary",
   className = "",
@@ -12,7 +12,7 @@ export default function Logo({
 }) {
   return (
     <TouchableOpacity
-      className={`${backgroundColor}  rounded-md  p-2 self-start ${className}`}
+      className={`${backgroundColor}  rounded-md  p-1.5 self-start ${className}`}
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}

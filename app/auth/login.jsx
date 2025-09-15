@@ -49,7 +49,7 @@ export default function LoginScreen() {
 
   return (
     <ScreenWrapper>
-      <View className="flex-1 p-4">
+      <View className="flex-1 py-6 px-4">
         <Header leftIcon={<BackButton />} logo={<Logo />} />
 
         <View className="my-9">
@@ -119,8 +119,8 @@ export default function LoginScreen() {
 
           {/* Forgot Password + Sign Up Section */}
 
-          <View className="flex-row justify-between mt-5 items-center">
-            <TouchableOpacity
+          <View className="flex-row justify-end mt-2 ">
+            {/* <TouchableOpacity
               onPress={() => router.push("/auth/register")}
               className="flex-row items-center"
             >
@@ -130,27 +130,27 @@ export default function LoginScreen() {
                   Register
                 </Text>
               </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <TouchableOpacity
               onPress={() => router.push("/auth/forgotPassword")}
             >
-              <Text className="text-primary font-sans-medium text-[15px] ">
+              <Text className="text-primary font-poppins-semibold ml-auto text-[15px] ">
                 Forgot password?
               </Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* <TouchableOpacity
-          className="mt-14 flex-row justify-center items-center"
+        <TouchableOpacity
+          className="mt-12 flex-row justify-center items-center"
           onPress={() => router.push("/auth/login")}
         >
-          <Text className="text-body font-sans-medium tracking-wide text-gray-800 ">
-            New to Exam prep?{" "}
-            <Text className="text-primary font-sans-medium ml-2 ">Sign Up</Text>
+          <Text className="text-body  text-gray-800 ">
+            Don't have an account?{" "}
+            <Text className="text-primary font-sans-medium ml-2 ">Sign In</Text>
           </Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
       </View>
     </ScreenWrapper>
   );

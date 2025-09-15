@@ -6,6 +6,7 @@ import BottomSheet, {
 import axios from "axios";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
+  ActivityIndicator,
   Alert,
   FlatList,
   Image,
@@ -157,8 +158,8 @@ const Leadersboard = () => {
           )}
         </View>
         <Image
-          source={{ uri: user.avatar }}
-          className={`w-16 h-16 rounded-full border-2 ${borderColor}`}
+          source={{ uri: user.image }}
+          className={`w-14 h-14 rounded-full border-2 ${borderColor}`}
         />
       </View>
       <Text className="font-medium font-sans-medium text-[15px] text-white text-center">
@@ -204,7 +205,7 @@ const Leadersboard = () => {
                 : "th"}
         </Text>
         <Image
-          source={{ uri: item.avatar }}
+          source={{ uri: item.image }}
           className="w-10 h-10 rounded-full"
         />
 
@@ -241,7 +242,7 @@ const Leadersboard = () => {
       snapPoints={snapPoints}
       enablePanDownToClose={true}
       backdropComponent={renderBackdrop}
-      backgroundStyle={{ backgroundColor: "#fff" }}
+      backgroundStyle={{ backgroundColor: "#fff", zIndex: 9999 }}
     >
       <BottomSheetView style={styles.contentContainer}>
         <View className="px-4 z-50 pt-4 pb-2">
