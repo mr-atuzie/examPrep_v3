@@ -39,9 +39,9 @@ export default function WelcomeScreen() {
         {/* Main Content */}
         <View className="flex-1 justify-center">
           {/* Main Illustration */}
-          <View className="items-center justify-center h-[370px] w-full ">
+          <View className="items-center justify-center  w-full ">
             <AnimatedSvg entering={FadeIn.duration(1500)}>
-              <WelcomeIcon width="100%" height="100%" />
+              <WelcomeIcon width={300} height={250} />
             </AnimatedSvg>
           </View>
 
