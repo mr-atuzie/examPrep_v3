@@ -43,7 +43,7 @@ const SetExamMode = () => {
 
   return (
     <ScreenWrapper backgroundColor={"#1E4B9B"} statusBarStyle="light-content">
-      <View className="flex-1 bg-white rounded-t-3xl pt-6 px-5">
+      <View className="flex-1 bg-white rounded-t-3xl py-10 px-5">
         <Header leftIcon={<BackButton />} />
 
         {/* Progress Indicator (Visual Bar) */}
@@ -59,13 +59,13 @@ const SetExamMode = () => {
         </View>
 
         {/* Heading */}
-        <Text className=" text-center text-gray-900 mb-2 text-[24px] font-poppins-extrabold">
-          How do you want to practice{" "}
-          <Text className=" text-[#1E4B9B]">{subject}</Text>?
+        <Text className=" text-center text-gray-900  text-[22px]  font-poppins-extrabold">
+          How do you want to practice for your{" "}
+          <Text className=" text-[#1E4B9B]  ">{subject}</Text> exam?
         </Text>
 
         <Text className="text-center text-gray-600 mb-8 leading-6 px-2 font-sans text-[14px]">
-          Select between a timed exam simulation or a relaxed study session.
+          Select between time exam mode or study mode.
         </Text>
 
         {/* Options */}

@@ -104,10 +104,10 @@ const ForgotPassword = () => {
 
             <TouchableOpacity
               onPress={() => router.back()}
-              className="mt-12 flex-row justify-center"
+              className="mt-32 flex-row justify-center"
             >
               <Text className="text-body font-sans">Changed your mind? </Text>
-              <Text className="text-primary  text-body font-sans-bold">
+              <Text className="text-primary  text-body font-sans-medium">
                 Sign In
               </Text>
             </TouchableOpacity>

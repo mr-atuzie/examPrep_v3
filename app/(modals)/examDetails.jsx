@@ -272,7 +272,9 @@ export default function ExamDetails() {
             {/* Benefits Section */}
             <View className="my-6">
               <Text className="text-body tracking-wide font-sans-bold mb-4 text-gray-800">
-                What you&#39;ll get:
+                {!exam?.hasActiveSubscription
+                  ? "Gain instant access to:"
+                  : "You have full access to:"}
               </Text>
               <View className="space-y-4">
                 {benefits.map((benefit, index) => (

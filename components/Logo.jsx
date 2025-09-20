@@ -12,7 +12,7 @@ export default function Logo({
 }) {
   return (
     <TouchableOpacity
-      className={`${backgroundColor}  rounded-md  p-1.5 self-start ${className}`}
+      className={`${backgroundColor}  rounded flex justify-center items-center  p-1.5 self-start ${className}`}
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}

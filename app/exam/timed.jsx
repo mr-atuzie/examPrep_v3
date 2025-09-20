@@ -63,33 +63,6 @@ export default function TimedScreen() {
     router.dismissTo("/(tabs)/home");
   };
 
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     const handleLeave = () => {
-  //       router.dismissTo("/(tabs)/home");
-  //     };
-
-  //     const backAction = () => {
-  //       Alert.alert(
-  //         "Discard changes?",
-  //         "You have unsaved changes. Are you sure you want to leave?",
-  //         [
-  //           { text: "Don't leave", style: "cancel", onPress: () => {} },
-  //           { text: "Leave", style: "destructive", onPress: handleLeave },
-  //         ]
-  //       );
-  //       return true;
-  //     };
-
-  //     const backHandler = BackHandler.addEventListener(
-  //       "hardwareBackPress",
-  //       backAction
-  //     );
-
-  //     return () => backHandler.remove();
-  //   }, [router])
-  // );
-
   useFocusEffect(
     useCallback(() => {
       const handleLeave = () => {
@@ -172,9 +145,20 @@ export default function TimedScreen() {
   };
 
   const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
+    // const minutes = Math.floor(seconds / 60);
+    // const secs = seconds % 60;
+    // return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
-    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+
+    if (hours > 0) {
+      return `${hours}:${minutes.toString().padStart(2, "0")}:${secs
+        .toString()
+        .padStart(2, "0")}`;
+    }
+    return `${minutes}:${secs.toString().padStart(2, "0")}`;
   };
 
   const formatTimeReadable = (seconds) => {

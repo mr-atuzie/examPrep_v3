@@ -24,13 +24,15 @@ export default function WelcomeScreen() {
           <Logo />
           <TouchableOpacity
             onPress={handleSignIn}
-            className="flex-row items-center p-2"
+            className="flex-row  items-center p-2"
             accessibilityRole="button"
             accessible
           >
-            <Text className="text-body font-sans-medium ">Sign In</Text>
+            <Text className="text-body font-sans-medium text-primary">
+              Sign In
+            </Text>
 
-            <Entypo name="chevron-small-right" size={22} color="black" />
+            <Entypo name="chevron-small-right" size={20} color="#1E4B9B" />
           </TouchableOpacity>
         </View>
 

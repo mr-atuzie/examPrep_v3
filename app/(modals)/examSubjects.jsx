@@ -138,32 +138,32 @@ const ExamSubjects = () => {
 
   return (
     <ScreenWrapper backgroundColor={"#1E4B9B"} statusBarStyle="light-content">
-      <Header
-        leftIcon={
-          <BackButton iconColor="white" backgroundColor="transparent" />
-        }
-      />
+      <View className=" p-4">
+        <Header
+          leftIcon={
+            <BackButton iconColor="white" backgroundColor="transparent" />
+          }
+        />
 
-      {/* Hero Section */}
-      <View className="items-center">
-        {getImageForExam(exam?.title) ? (
-          <Image
-            source={getImageForExam(exam?.title)}
-            style={{ width: 64, height: 64, resizeMode: "contain" }}
-            className="mb-2"
-            accessibilityLabel={`${exam?.title} logo`}
-            accessible
-          />
-        ) : (
-          <View className="bg-indigo-50 h-28 w-28 rounded-full items-center justify-center shadow-sm">
-            <FontAwesome5 name="graduation-cap" size={48} color="#4f46e5" />
-          </View>
-        )}
-      </View>
+        {/* Hero Section */}
+        <View className="items-center mt-6">
+          {getImageForExam(exam?.title) ? (
+            <Image
+              source={getImageForExam(exam?.title)}
+              style={{ width: 64, height: 64, resizeMode: "contain" }}
+              className="mb-2"
+              accessibilityLabel={`${exam?.title} logo`}
+              accessible
+            />
+          ) : (
+            <View className="bg-indigo-50 h-28 w-28 rounded-full items-center justify-center shadow-sm">
+              <FontAwesome5 name="graduation-cap" size={48} color="#4f46e5" />
+            </View>
+          )}
+        </View>
 
-      {/* Exam Info */}
-      <View className="px-4 mb-6">
-        <Text className=" text-center text-gray-100 leading-6 font-sans">
+        {/* Exam Info */}
+        <Text className=" text-gray-100 text-center leading-6 font-sans">
           {exam?.description}
         </Text>
       </View>

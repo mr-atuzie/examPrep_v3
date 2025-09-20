@@ -119,7 +119,7 @@ export default function LoginScreen() {
 
           {/* Forgot Password + Sign Up Section */}
 
-          <View className="flex-row justify-end mt-2 ">
+          <View className="flex-row justify-end tracking-wide ">
             {/* <TouchableOpacity
               onPress={() => router.push("/auth/register")}
               className="flex-row items-center"
@@ -135,7 +135,7 @@ export default function LoginScreen() {
             <TouchableOpacity
               onPress={() => router.push("/auth/forgotPassword")}
             >
-              <Text className="text-primary font-poppins-semibold ml-auto text-[15px] ">
+              <Text className="text-primary font-sans  ml-auto text-[14px] ">
                 Forgot password?
               </Text>
             </TouchableOpacity>
@@ -143,7 +143,7 @@ export default function LoginScreen() {
         </View>
 
         <TouchableOpacity
-          className="mt-12 flex-row justify-center items-center"
+          className="mt-24 flex-row justify-center items-center"
           onPress={() => router.push("/auth/login")}
         >
           <Text className="text-body  text-gray-800 ">

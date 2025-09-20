@@ -1,6 +1,7 @@
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import BottomSheet, {
   BottomSheetBackdrop,
+  BottomSheetScrollView,
   BottomSheetView,
 } from "@gorhom/bottom-sheet";
 import axios from "axios";
@@ -8,6 +9,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
+  Dimensions,
   FlatList,
   Image,
   StyleSheet,
@@ -18,6 +20,7 @@ import {
 import BackButton from "../../components/BackButton";
 import ImageLoader from "../../components/ImageLoader";
 import ScreenWrapper from "../../components/ScreenWrapper";
+import { getImageForExam } from "../../services/ImageServices";
 
 const Leadersboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
@@ -28,7 +31,9 @@ const Leadersboard = () => {
   const [examsLoading, setExamsLoading] = useState(false);
 
   const bottomSheetRef = useRef(null);
+  const { height: screenHeight } = Dimensions.get("window");
 
+  // Calculate snap points based on screen height
   const snapPoints = useMemo(() => ["50%", "70%", "90%"], []);
 
   const renderBackdrop = useCallback(
@@ -65,8 +70,27 @@ const Leadersboard = () => {
 
       const { data } = await axios.get(url);
 
-      setLeaderboardData(data);
-      setFilteredData(data);
+      let transformedUsers = data.map((user, index) => {
+        // If examId present, use that exam’s score from examPoints object
+        const score = examId
+          ? (user.examPoints?.[examId] ?? 0)
+          : (user.totalPoints ?? 0);
+
+        return {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          image: user.image,
+          country: user.country,
+          score, // score is dynamic based on examId
+          rank: index + 1,
+          examSubscriptions: user.examSubscriptions || [],
+          totalPoints: user.totalPoints, // keep original
+        };
+      });
+
+      setLeaderboardData(transformedUsers);
+      setFilteredData(transformedUsers);
     } catch (error) {
       const message =
         error.response?.data?.message ||
@@ -83,8 +107,6 @@ const Leadersboard = () => {
       setExamsLoading(true);
       // Option 1: If you need to get exams from subscriptions
       const { data } = await axios.get("/subscriptions/my-subscriptions");
-
-      console.log(data);
 
       // Extract exams from subscriptions if needed
       const userExams = data.data.map((sub) => sub.exam);
@@ -242,11 +264,12 @@ const Leadersboard = () => {
       snapPoints={snapPoints}
       enablePanDownToClose={true}
       backdropComponent={renderBackdrop}
-      backgroundStyle={{ backgroundColor: "#fff", zIndex: 9999 }}
+      backgroundStyle={{ backgroundColor: "#fff" }}
+      style={{ zIndex: 100 }}
     >
       <BottomSheetView style={styles.contentContainer}>
         <View className="px-4 z-50 pt-4 pb-2">
-          <Text className="font-sans-bold text-2xl text-gray-900 tracking-tight">
+          <Text className="font-poppins-bold text-2xl text-gray-900 tracking-tight">
             Filter Leaderboard
           </Text>
           <Text className="font-sans text-sm text-gray-500 text-[14px] mb-6">
@@ -254,55 +277,92 @@ const Leadersboard = () => {
           </Text>
         </View>
 
-        <View className="px-4">
-          {/* All Exams Option */}
-          <TouchableOpacity
-            className={`p-4 rounded-xl mb-3 border-2 ${
-              !selectedExam
-                ? "border-[#1E4B9B] bg-[#F0F7FF]"
-                : "border-gray-200 bg-white"
-            }`}
-            onPress={() => setSelectedExam(null)}
-          >
-            <Text
-              className={`font-sans-medium ${
-                !selectedExam ? "text-[#1E4B9B]" : "text-gray-800"
-              }`}
-            >
-              All Exams
-            </Text>
-          </TouchableOpacity>
+        {/* Use ScrollView instead of FlatList for better control */}
+        <BottomSheetScrollView
+          style={styles.scrollView}
+          contentContainerStyle={styles.scrollViewContent}
+        >
+          <View className="px-4 pb-6">
+            {/* All Exams Option */}
 
-          {examsLoading ? (
-            <ActivityIndicator size="small" color="#1E4B9B" />
-          ) : exams.length === 0 ? (
-            <Text className="text-gray-500 text-center py-4">
-              No exam subscriptions found
-            </Text>
-          ) : (
-            exams.map((exam) => (
-              <TouchableOpacity
-                key={exam._id}
-                className={`p-4 rounded-xl mb-3 border-2 ${
-                  selectedExam?._id === exam._id
-                    ? "border-[#1E4B9B] bg-[#F0F7FF]"
-                    : "border-gray-200 bg-white"
-                }`}
-                onPress={() => handleExamSelect(exam)}
-              >
-                <Text
-                  className={`font-sans-medium ${
-                    selectedExam?._id === exam._id
-                      ? "text-[#1E4B9B]"
-                      : "text-gray-800"
-                  }`}
-                >
-                  {exam.title}
-                </Text>
-              </TouchableOpacity>
-            ))
-          )}
-        </View>
+            {examsLoading ? (
+              <ActivityIndicator size="small" color="#1E4B9B" />
+            ) : exams.length === 0 ? (
+              <Text className="text-gray-500 text-center py-4">
+                No exam subscriptions found
+              </Text>
+            ) : (
+              <View className="flex-row flex-wrap justify-between">
+                {/* All Exams */}
+                <View className="w-[48%] mb-4">
+                  <TouchableOpacity
+                    className={`px-4 py-2 rounded-xl items-center gap-2 flex-row border-2 ${
+                      !selectedExam
+                        ? "border-[#1E4B9B] bg-[#F0F7FF]"
+                        : "border-gray-200 bg-white"
+                    }`}
+                    onPress={() => setSelectedExam(null)}
+                  >
+                    <View className="bg-indigo-100 h-10 w-10 rounded-full items-center justify-center">
+                      <FontAwesome5
+                        name="graduation-cap"
+                        size={18}
+                        color="#4f46e5"
+                      />
+                    </View>
+                    <Text
+                      className={`font-sans-medium text-center ${
+                        !selectedExam ? "text-[#1E4B9B]" : "text-gray-800"
+                      }`}
+                    >
+                      All Exams
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+
+                {/* Exam List */}
+                {exams.map((exam) => (
+                  <View key={exam._id} className="w-[48%] mb-4">
+                    <TouchableOpacity
+                      className={`px-4 py-2 rounded-xl items-center gap-2 flex-row border-2 ${
+                        selectedExam?._id === exam._id
+                          ? "border-[#1E4B9B] bg-[#F0F7FF]"
+                          : "border-gray-200 bg-white"
+                      }`}
+                      onPress={() => handleExamSelect(exam)}
+                    >
+                      {getImageForExam(exam.title) ? (
+                        <Image
+                          source={getImageForExam(exam.title)}
+                          className="w-10 h-10"
+                          resizeMode="contain"
+                        />
+                      ) : (
+                        <View className="bg-indigo-100 h-10 w-10 rounded-full items-center justify-center">
+                          <FontAwesome5
+                            name="graduation-cap"
+                            size={18}
+                            color="#4f46e5"
+                          />
+                        </View>
+                      )}
+                      <Text
+                        className={`font-sans-medium text-center ${
+                          selectedExam?._id === exam._id
+                            ? "text-[#1E4B9B]"
+                            : "text-gray-800"
+                        }`}
+                        numberOfLines={2}
+                      >
+                        {exam.title}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </View>
+            )}
+          </View>
+        </BottomSheetScrollView>
       </BottomSheetView>
     </BottomSheet>
   );
@@ -344,7 +404,7 @@ const Leadersboard = () => {
       {renderTopThree()}
 
       {/* Leaderboard List */}
-      <View className="flex-1 bg-gray-100 rounded-t-3xl pt-6 px-6">
+      <View className="flex-1 bg-gray-100 pb-20 rounded-t-3xl pt-6 px-6">
         {displayData.length > 0 ? (
           <FlatList
             data={displayData.slice(3)}
@@ -379,6 +439,12 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollViewContent: {
+    paddingBottom: 30, // Add extra padding at the bottom
   },
 });
 

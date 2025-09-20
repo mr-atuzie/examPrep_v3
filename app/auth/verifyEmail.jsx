@@ -137,8 +137,9 @@ export default function VerifyEmail() {
           </TouchableOpacity>
 
           <Text className="text-[12px] text-gray-500 text-center mt-2 px-10">
-            If you still don’t see the email, be sure to check your{" "}
-            <Text className="font-medium text-primary">spam folder.</Text>
+            Check your{" "}
+            <Text className="font-medium text-primary">Spam folder</Text> if you
+            don’t see the email.
           </Text>
         </View>
       </View>

@@ -219,8 +219,9 @@ export default function ResetPassword() {
             </TouchableOpacity>
 
             <Text className="text-[12px] lowercase mt-1 text-gray-500 text-center px-10">
-              If you still don’t see the email, be sure to check your{" "}
-              <Text className="font-medium text-primary">Spam</Text> folder.
+              Check your{" "}
+              <Text className="font-medium text-primary">Spam folder</Text> if
+              you don’t see the email.
             </Text>
           </View>
         </ScrollView>

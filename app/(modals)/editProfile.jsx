@@ -7,7 +7,6 @@ import * as ImagePicker from "expo-image-picker";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useDispatch } from "react-redux";
 
 import { TextInput } from "react-native-paper";
@@ -23,6 +22,7 @@ import { setUser } from "../../store/userSlice";
 
 const EditProfile = () => {
   const [fullname, setFullname] = useState("");
+  const [school, setSchool] = useState("");
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState(null);
@@ -111,63 +111,77 @@ const EditProfile = () => {
   };
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <ScreenWrapper backgroundColor={"#1E4B9B"} statusBarStyle="light-content">
-        <View className="flex-1 bg-white rounded-t-[30px] py-6 px-4">
-          <Header
-            title="Update Profile"
-            leftIcon={<BackButton onPress={() => router.back()} />}
+    <ScreenWrapper backgroundColor={"#1E4B9B"} statusBarStyle="light-content">
+      <View className="flex-1 bg-white rounded-t-[30px] py-10 px-4">
+        <Header leftIcon={<BackButton onPress={() => router.back()} />} />
+
+        <View className="flex-col flex-1">
+          {/* Profile Picture */}
+          <View style={styles.avatarContainer}>
+            <Image
+              source={getProfileImage(image)}
+              style={styles.avatar}
+              contentFit="cover"
+              transition={200}
+            />
+            <TouchableOpacity onPress={pickImage} style={styles.editIcon}>
+              <Entypo name="camera" size={20} color="white" />
+            </TouchableOpacity>
+          </View>
+
+          <TextInput
+            mode="outlined"
+            label="Full Name"
+            value={fullname}
+            onChangeText={setFullname}
+            autoCapitalize="words"
+            textContentType="name"
+            autoComplete="name"
+            style={{ backgroundColor: "#F8FAFC", marginBottom: 16 }}
+            theme={{
+              colors: {
+                primary: "#1E4B9B",
+                placeholder: "#94A3B8",
+                text: "#1E293B",
+              },
+              roundness: 10,
+            }}
           />
 
-          <View className="flex-col flex-1">
-            {/* Profile Picture */}
-            <View style={styles.avatarContainer}>
-              <Image
-                source={getProfileImage(image)}
-                style={styles.avatar}
-                contentFit="cover"
-                transition={200}
-              />
-              <TouchableOpacity onPress={pickImage} style={styles.editIcon}>
-                <Entypo name="camera" size={20} color="white" />
-              </TouchableOpacity>
-            </View>
+          <TextInput
+            mode="outlined"
+            label="School Name"
+            value={school}
+            onChangeText={setSchool}
+            autoCapitalize="words"
+            textContentType="name"
+            autoComplete="name"
+            style={{ backgroundColor: "#F8FAFC" }}
+            theme={{
+              colors: {
+                primary: "#1E4B9B",
+                placeholder: "#94A3B8",
+                text: "#1E293B",
+              },
+              roundness: 10,
+            }}
+          />
 
-            <TextInput
-              mode="outlined"
-              label="Full Name"
-              value={fullname}
-              onChangeText={setFullname}
-              autoCapitalize="words"
-              textContentType="name"
-              autoComplete="name"
-              style={{ backgroundColor: "#F8FAFC" }}
-              theme={{
-                colors: {
-                  primary: "#1E4B9B",
-                  placeholder: "#94A3B8",
-                  text: "#1E293B",
-                },
-                roundness: 10,
-              }}
-            />
-
-            {/* Submit Button */}
-            <View style={styles.footer}>
-              <CustomButton
-                backgroundColor="#1E4B9B"
-                loading={loading}
-                onPress={handleSubmit}
-              >
-                <Text className=" text-white font-sans-medium tracking-wide">
-                  Save Changes
-                </Text>
-              </CustomButton>
-            </View>
+          {/* Submit Button */}
+          <View style={styles.footer}>
+            <CustomButton
+              backgroundColor="#1E4B9B"
+              loading={loading}
+              onPress={handleSubmit}
+            >
+              <Text className=" text-white font-sans-medium tracking-wide">
+                Save Changes
+              </Text>
+            </CustomButton>
           </View>
         </View>
-      </ScreenWrapper>
-    </GestureHandlerRootView>
+      </View>
+    </ScreenWrapper>
   );
 };
 
