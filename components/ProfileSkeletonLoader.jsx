@@ -60,7 +60,7 @@ const SkeletonBox = ({ height, width, radius = 8, className = "" }) => {
 
 const ProfileSkeletonLoader = () => {
   return (
-    <View className="items-center p-4">
+    <View className="items-center py-10 px-4">
       <SkeletonBox height={140} width={140} radius={70} />
       {/* Exam Title */}
       {/* <SkeletonBox height={28} width="70%" className="mt-6 mb-2" /> */}

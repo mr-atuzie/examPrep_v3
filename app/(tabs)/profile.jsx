@@ -334,10 +334,10 @@ export default function Profile() {
                   {profile?.position === 1
                     ? "st"
                     : profile?.position === 2
-                    ? "nd"
-                    : profile?.position === 3
-                    ? "rd"
-                    : "th"}
+                      ? "nd"
+                      : profile?.position === 3
+                        ? "rd"
+                        : "th"}
                 </Text>
               </View>
             </View>
@@ -384,16 +384,6 @@ export default function Profile() {
               delay={100}
               onPress={() => handleOptionPress("/(modals)/subscriptions")}
             />
-            {/* 
-            <ProfileOption
-              title="Settings"
-              subtitle="Customize your app preferences"
-              iconName="settings"
-              iconComponent={Ionicons}
-              iconColor="#0ea5e9"
-              delay={150}
-              onPress={() => handleOptionPress("/(modals)/settings")}
-            /> */}
 
             <ProfileOption
               title="Change your password"
@@ -403,6 +393,26 @@ export default function Profile() {
               iconColor="#0ea5e9"
               delay={150}
               onPress={() => handleOptionPress("/(modals)/updatePassword")}
+            />
+
+            <ProfileOption
+              title="Terms of Use"
+              subtitle="Read our terms and conditions"
+              iconName="text-document-inverted"
+              iconComponent={Entypo}
+              iconColor="#f59e0b" // new amber color
+              delay={150}
+              onPress={() => handleOptionPress("/legal/terms")} // updated path if using /policies
+            />
+
+            <ProfileOption
+              title="Privacy Policy"
+              subtitle="View our Privacy Policy"
+              iconName="shield-outline"
+              iconComponent={Ionicons}
+              iconColor="#ec4899" // new rose color
+              delay={180}
+              onPress={() => handleOptionPress("/legal/privacy")} // adjust path to your folder
             />
 
             <ProfileOption

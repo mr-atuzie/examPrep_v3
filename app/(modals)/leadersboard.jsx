@@ -1,4 +1,4 @@
-import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetScrollView,
@@ -164,7 +164,7 @@ const Leadersboard = () => {
   const renderTopUser = (user, rank, borderColor) => (
     <View className="items-center">
       <View className="relative mb-2">
-        <View
+        {/* <View
           className={`w-6 h-6 ${
             rank === 1
               ? "w-7 h-7 bg-yellow-500"
@@ -178,7 +178,7 @@ const Leadersboard = () => {
           ) : (
             <Text className="text-white text-[14px] font-sans">{rank}</Text>
           )}
-        </View>
+        </View> */}
         <Image
           source={{ uri: user.image }}
           className={`w-14 h-14 rounded-full border-2 ${borderColor}`}
@@ -265,7 +265,7 @@ const Leadersboard = () => {
       enablePanDownToClose={true}
       backdropComponent={renderBackdrop}
       backgroundStyle={{ backgroundColor: "#fff" }}
-      style={{ zIndex: 100 }}
+      style={styles.bottomSheet} // Add this line
     >
       <BottomSheetView style={styles.contentContainer}>
         <View className="px-4 z-50 pt-4 pb-2">
@@ -436,6 +436,12 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     backgroundColor: "rgba(0, 0, 0, 0.9)",
+  },
+  bottomSheetContainer: {
+    zIndex: 100, // Higher than the rank badges
+  },
+  bottomSheet: {
+    zIndex: 20, // Higher than the rank badges
   },
   contentContainer: {
     flex: 1,

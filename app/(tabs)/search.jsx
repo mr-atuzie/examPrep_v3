@@ -12,8 +12,8 @@ import {
   View,
 } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import Loader from "../../components/Loader";
 import ScreenWrapper from "../../components/ScreenWrapper";
+import SearchSkeletonLoader from "../../components/SearchSkeletonLoader";
 import UserAvatar from "../../components/UserAvatar";
 
 export default function Search() {
@@ -117,7 +117,7 @@ export default function Search() {
       {/* Content */}
       <View className="flex-1 bg-gray-100 rounded-t-[30px] py-6 px-4">
         {loading ? (
-          <Loader />
+          <SearchSkeletonLoader />
         ) : exams.length > 0 ? (
           <ScrollView
             contentContainerStyle={{ flexGrow: 1 }}
