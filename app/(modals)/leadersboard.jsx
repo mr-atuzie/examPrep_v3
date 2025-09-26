@@ -391,7 +391,7 @@ const Leadersboard = () => {
         </View>
 
         <TouchableOpacity
-          className="p-2"
+          className="p-2 bg-gradient-to-r from-blue-50 to-white px-3 py-2 rounded-md flex-row items-center border border-blue-100 "
           onPress={openFilterSheet}
           accessibilityLabel="Filter options"
           accessibilityRole="button"
