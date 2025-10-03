@@ -52,12 +52,12 @@ export default function LoginScreen() {
       <View className="flex-1 py-6 px-4">
         <Header leftIcon={<BackButton />} logo={<Logo />} />
 
-        <View className="my-9">
-          <Text className="font-poppins-bold text-primary text-display-md">
-            Hey,Welcome Back.
+        <View className="mt-9 mb-4">
+          <Text className="font-poppins-semibold tracking-wider text-primary text-display-xl">
+            Hey,Welcome Back
           </Text>
           <Text className="text-body font-sans ">
-            Login now to start practicing and stay ahead
+            Login now to start practicing and stay ahead.
           </Text>
         </View>
         <View className="flex flex-col gap-4">
@@ -135,7 +135,7 @@ export default function LoginScreen() {
             <TouchableOpacity
               onPress={() => router.push("/auth/forgotPassword")}
             >
-              <Text className="text-primary font-sans  ml-auto text-[14px] ">
+              <Text className="text-blue-600 font-sans  ml-auto text-body ">
                 Forgot password?
               </Text>
             </TouchableOpacity>
@@ -148,7 +148,7 @@ export default function LoginScreen() {
         >
           <Text className="text-body  text-gray-800 ">
             Don't have an account?{" "}
-            <Text className="text-primary font-sans-medium ml-2 ">Sign In</Text>
+            <Text className="text-blue-600 ml-2 ">Sign Up</Text>
           </Text>
         </TouchableOpacity>
       </View>

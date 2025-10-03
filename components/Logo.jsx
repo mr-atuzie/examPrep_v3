@@ -3,7 +3,7 @@ import { TouchableOpacity } from "react-native";
 
 export default function Logo({
   onPress,
-  size = 20,
+  size = 22,
   color = "#fff",
   backgroundColor = "bg-primary",
   className = "",

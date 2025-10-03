@@ -27,10 +27,11 @@ module.exports = {
         "poppins-extrabold": ["Poppins-ExtraBold", "sans-serif"],
       },
       fontSize: {
-        "display-2xl": ["48px", "56px"],
-        "display-xl": ["36px", "44px"],
-        "display-lg": ["32px", "40px"],
-        "display-md": ["28px", "36px"],
+        "display-2xl": ["32px", "40px"], // reduced from 48px
+        "display-xl": ["28px", "36px"], // reduced from 36px
+        "display-lg": ["24px", "32px"], // reduced from 32px
+        "display-md": ["20px", "28px"], // reduced from 28px
+        "display-sm": ["18px", "24px"],
         body: ["16px", "24px"],
       },
     },

@@ -65,8 +65,8 @@ export default function RegisterScreen() {
       <View className="flex-1 px-4 py-6">
         <Header leftIcon={<BackButton />} logo={<Logo />} />
 
-        <View className="my-9">
-          <Text className="font-poppins-bold text-primary text-display-md">
+        <View className="mt-9 mb-4">
+          <Text className="font-poppins-semibold tracking-wider text-primary text-display-xl">
             Study Smarter For Exams.
           </Text>
 
@@ -76,7 +76,7 @@ export default function RegisterScreen() {
         </View>
 
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 20 }}
+          contentContainerStyle={{ paddingBottom: 40 }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
@@ -186,16 +186,44 @@ export default function RegisterScreen() {
                 Register
               </Text>
             </CustomButton>
+
+            {/* Terms and Privacy Policy */}
+            {/* <Text className="capitalize text-[14px] mt-4 text-gray-800 px-6 text-center">
+              By signing up, you agree to our{" "}
+              <Text
+                onPress={() => router.push("/legal/terms")}
+                className="underline text-blue-500"
+              >
+                Terms
+              </Text>{" "}
+              and{" "}
+              <Text
+                onPress={() => router.push("/legal/privacy")}
+                className="underline text-blue-500"
+              >
+                Privacy Policy
+              </Text>
+            </Text> */}
+
+            <Text className="text-[14px] mt-2 text-gray-800 font-sans  px-4 text-center">
+              By signing up, you agree to our{" "}
+              <TouchableOpacity onPress={() => router.push("/legal/terms")}>
+                <Text className="underline text-blue-600">Terms</Text>
+              </TouchableOpacity>{" "}
+              {"  "}and{" "}
+              <TouchableOpacity onPress={() => router.push("/legal/privacy")}>
+                <Text className="underline  text-blue-600">Privacy Policy</Text>
+              </TouchableOpacity>
+            </Text>
           </View>
+
           <TouchableOpacity
             className="mt-12 flex-row justify-center items-center"
             onPress={() => router.push("/auth/login")}
           >
             <Text className="text-body  text-gray-800 ">
               Already have an account?{" "}
-              <Text className="text-primary font-sans-medium ml-2 ">
-                Sign In
-              </Text>
+              <Text className="text-blue-600  ml-2 ">Sign In</Text>
             </Text>
           </TouchableOpacity>
         </ScrollView>
